@@ -64,6 +64,11 @@ app.post("/api/send-email", async (req, res) => {
       from: "Celeriz <team@celeriz.com>",
       to,
       subject: "Welcome to Celeriz 💸",
+      attachments: [{
+        filename: 'logo.png',
+        path: path.join(process.cwd(), 'public', 'images', 'logo.png'),
+        cid: 'company-logo'
+      }],
       html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -77,10 +82,10 @@ app.post("/api/send-email", async (req, res) => {
       <td align="center">
         <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
           <tr>
-            <td style="padding: 30px 20px; text-align: center; background-color: #1a7e6c;">
-              <div style="width: 120px; height: 120px; margin: 0 auto 15px; background-color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; color: #1a7e6c;">C</div>
-              <h1 style="margin: 0; font-size: 28px; color: #ffffff;">Welcome to Celeriz 💸</h1>
-              <p style="margin: 8px 0 0; font-size: 16px; color: #ffffff;">You're officially on the list!</p>
+            <td style="padding: 30px 20px; text-align: center; background-color: #05FFDE;">
+              <img src="cid:company-logo" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px; border-radius: 50%;">
+              <h1 style="margin: 0; font-size: 28px; color: #000;">Welcome to Celeriz 💸</h1>
+              <p style="margin: 8px 0 0; font-size: 16px; color: #333;">You're officially on the list!</p>
             </td>
           </tr>
           <tr>
@@ -97,7 +102,7 @@ app.post("/api/send-email", async (req, res) => {
 
               <p style="font-size: 16px; line-height: 1.6;">We believe financial freedom should be borderless, and you're now part of the movement that's making that real.</p>
 
-              <p style="font-size: 16px; line-height: 1.6;">Got questions or want to say hi? Reach us any time at <a href="mailto:team@celeriz.com" style="color: #1a7e6c;">team@celeriz.com</a>.</p>
+              <p style="font-size: 16px; line-height: 1.6;">Got questions or want to say hi? Reach us any time at <a href="mailto:team@celeriz.com" style="color: #05FFDE;">team@celeriz.com</a>.</p>
 
               <p style="font-size: 16px; line-height: 1.6; margin-top: 30px;">Welcome aboard,<br><strong>— The Celeriz Team</strong></p>
             </td>

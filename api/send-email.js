@@ -39,11 +39,7 @@ app.post("/api/send-email", async (req, res) => {
 
     // Send email
     const data = await resend.emails.send({
-      from: {
-        name: "Celeriz",
-        email: "team@celeriz.com",
-        avatar: "https://celeriz-email-list.vercel.app/images/logo.png"
-      },
+      from: "Celeriz <team@celeriz.com>",
       to,
       subject: "Welcome to Celeriz 💸",
       html: `

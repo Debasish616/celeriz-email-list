@@ -17,11 +17,6 @@ const isValidEmail = (email) => {
   return emailRegex.test(email)
 }
 
-// Health check endpoint
-app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "ok", message: "Server is running" })
-})
-
 // Email sending endpoint
 app.post("/api/send-email", async (req, res) => {
   try {
@@ -118,4 +113,4 @@ app.use((err, req, res, next) => {
 })
 
 // Export the Express API
-export default app 
+module.exports = app 

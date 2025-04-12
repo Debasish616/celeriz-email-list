@@ -4,17 +4,21 @@
     {
       "src": "api/send-email.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/health.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/send-email",
+      "src": "/api/send-email",
       "dest": "/api/send-email.js",
       "methods": ["POST"]
     },
     {
-      "src": "/health",
-      "dest": "/api/send-email.js",
+      "src": "/api/health",
+      "dest": "/api/health.js",
       "methods": ["GET"]
     }
   ]

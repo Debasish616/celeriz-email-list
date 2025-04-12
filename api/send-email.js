@@ -61,7 +61,11 @@ app.post("/api/send-email", async (req, res) => {
 
     // Send email
     const data = await resend.emails.send({
-      from: "Celeriz <team@celeriz.com>",
+      from: {
+        name: "Celeriz",
+        email: "team@celeriz.com",
+        avatar: logoBase64
+      },
       to,
       subject: "Welcome to Celeriz 💸",
       html: `

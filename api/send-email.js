@@ -19,21 +19,12 @@ const isValidEmail = (email) => {
   return emailRegex.test(email)
 }
 
-// Function to get base64 image
+// Function to get base64 encoded image
 const getBase64Image = () => {
   try {
     const imagePath = path.join(process.cwd(), 'public', 'images', 'logo.png')
-    console.log('Attempting to read image from:', imagePath)
-    
-    if (!fs.existsSync(imagePath)) {
-      console.error('Image file does not exist at path:', imagePath)
-      return null
-    }
-    
     const imageBuffer = fs.readFileSync(imagePath)
-    const base64String = `data:image/png;base64,${imageBuffer.toString('base64')}`
-    console.log('Successfully loaded image')
-    return base64String
+    return `data:image/png;base64,${imageBuffer.toString('base64')}`
   } catch (error) {
     console.error('Error reading image:', error)
     return null
@@ -79,62 +70,42 @@ app.post("/api/send-email", async (req, res) => {
 <head>
   <meta charset="UTF-8">
   <title>Welcome to Celeriz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-  <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #f5f5f5; padding: 40px 0;">
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+  <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f4f4; padding: 40px 0;">
     <tr>
       <td align="center">
-        <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-          <!-- Header -->
+        <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
           <tr>
-            <td style="padding: 40px 20px; text-align: center; background-color: #ffffff; border-bottom: 1px solid #e5e5e5;">
-              <img src="${logoBase64}" alt="Celeriz Logo" style="width: 140px; height: auto; margin-bottom: 24px; display: block; margin-left: auto; margin-right: auto;">
-              <h1 style="margin: 0; font-size: 32px; font-weight: 700; color: #000000; letter-spacing: -0.5px;">Welcome to Celeriz</h1>
-              <p style="margin: 12px 0 0; font-size: 18px; font-weight: 500; color: #333333;">You're officially on the list!</p>
+            <td style="padding: 30px 20px; text-align: center; background-color: #1a7e6c;">
+              <div style="width: 120px; height: 120px; margin: 0 auto 15px; background-color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; color: #1a7e6c;">C</div>
+              <h1 style="margin: 0; font-size: 28px; color: #ffffff;">Welcome to Celeriz 💸</h1>
+              <p style="margin: 8px 0 0; font-size: 16px; color: #ffffff;">You're officially on the list!</p>
             </td>
           </tr>
-          
-          <!-- Content -->
           <tr>
-            <td style="padding: 40px 40px 30px;">
-              <p style="font-size: 16px; line-height: 1.6; color: #333333; margin: 0 0 24px;">
-                Thanks for joining the Celeriz waitlist — we're building a better way to move money globally.
-              </p>
-              
-              <p style="font-size: 16px; line-height: 1.6; color: #333333; margin: 0 0 24px;">
-                Celeriz is a stablecoin-powered neobank designed for the modern world. We help individuals, students, and businesses send and receive funds across borders instantly, affordably, and transparently — no middlemen, no hidden fees.
-              </p>
+            <td style="padding: 30px 30px 10px; color: #444;">
+              <p style="font-size: 16px; line-height: 1.6;">Thanks for joining the Celeriz waitlist — we're building a better way to move money globally.</p>
+              <p style="font-size: 16px; line-height: 1.6;">Celeriz is a stablecoin-powered neobank designed for the modern world. We help individuals, students, and businesses send and receive funds across borders instantly, affordably, and transparently — no middlemen, no hidden fees.</p>
 
-              <div style="background-color: #f8f8f8; border-radius: 8px; padding: 24px; margin: 32px 0; border: 1px solid #e5e5e5;">
-                <h2 style="font-size: 20px; font-weight: 600; color: #000000; margin: 0 0 16px;">As a waitlist member, you'll get:</h2>
-                <ul style="margin: 0; padding-left: 20px; color: #333333;">
-                  <li style="margin-bottom: 12px; font-size: 16px; line-height: 1.5;">🚀 Early access to our beta launch</li>
-                  <li style="margin-bottom: 12px; font-size: 16px; line-height: 1.5;">💡 Sneak peeks at features we're rolling out</li>
-                  <li style="margin-bottom: 12px; font-size: 16px; line-height: 1.5;">🎁 Exclusive rewards for our earliest users</li>
-                </ul>
-              </div>
+              <p style="font-size: 16px; line-height: 1.6;">As a waitlist member, you'll get:</p>
+              <ul style="padding-left: 20px; font-size: 16px; line-height: 1.6; color: #333;">
+                <li>🚀 Early access to our beta launch</li>
+                <li>💡 Sneak peeks at features we're rolling out</li>
+                <li>🎁 Exclusive rewards for our earliest users</li>
+              </ul>
 
-              <p style="font-size: 16px; line-height: 1.6; color: #333333; margin: 0 0 24px;">
-                We believe financial freedom should be borderless, and you're now part of the movement that's making that real.
-              </p>
+              <p style="font-size: 16px; line-height: 1.6;">We believe financial freedom should be borderless, and you're now part of the movement that's making that real.</p>
 
-              <p style="font-size: 16px; line-height: 1.6; color: #333333; margin: 0 0 24px;">
-                Got questions or want to say hi? Reach us any time at <a href="mailto:team@celeriz.com" style="color: #000000; text-decoration: underline; font-weight: 500;">team@celeriz.com</a>.
-              </p>
+              <p style="font-size: 16px; line-height: 1.6;">Got questions or want to say hi? Reach us any time at <a href="mailto:team@celeriz.com" style="color: #1a7e6c;">team@celeriz.com</a>.</p>
 
-              <p style="font-size: 16px; line-height: 1.6; color: #333333; margin: 32px 0 0;">
-                Welcome aboard,<br>
-                <strong style="color: #000000;">— The Celeriz Team</strong>
-              </p>
+              <p style="font-size: 16px; line-height: 1.6; margin-top: 30px;">Welcome aboard,<br><strong>— The Celeriz Team</strong></p>
             </td>
           </tr>
-          
-          <!-- Footer -->
           <tr>
-            <td style="text-align: center; font-size: 14px; color: #666666; padding: 24px; background-color: #f8f8f8; border-top: 1px solid #e5e5e5;">
+            <td style="text-align: center; font-size: 12px; color: #888; padding: 20px; background-color: #f8f9fa;">
               © 2025 Celeriz Inc. All rights reserved.<br/>
-              <span style="color: #888888;">You're receiving this email because you signed up for early access.</span>
+              You're receiving this email because you signed up for early access.
             </td>
           </tr>
         </table>

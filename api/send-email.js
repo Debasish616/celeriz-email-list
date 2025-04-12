@@ -64,6 +64,11 @@ app.post("/api/send-email", async (req, res) => {
       from: "Celeriz <team@celeriz.com>",
       to,
       subject: "Welcome to Celeriz 💸",
+      attachments: [{
+        filename: 'logo.png',
+        path: path.join(process.cwd(), 'public', 'images', 'logo.png'),
+        cid: 'company-logo'
+      }],
       html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +83,7 @@ app.post("/api/send-email", async (req, res) => {
         <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
           <tr>
             <td style="padding: 30px 20px; text-align: center; background-color: #05FFDE;">
-              <img src="${logoBase64}" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px; border-radius: 50%;">
+              <img src="cid:company-logo" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px; border-radius: 50%;">
               <h1 style="margin: 0; font-size: 28px; color: #000;">Welcome to Celeriz 💸</h1>
               <p style="margin: 8px 0 0; font-size: 16px; color: #333;">You're officially on the list!</p>
             </td>

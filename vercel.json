@@ -21,5 +21,8 @@
       "dest": "/api/health.js",
       "methods": ["GET"]
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 } 

@@ -70,6 +70,7 @@ app.post("/api/send-email", async (req, res) => {
 <head>
   <meta charset="UTF-8">
   <title>Welcome to Celeriz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4;">
   <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f4f4; padding: 40px 0;">
@@ -78,7 +79,7 @@ app.post("/api/send-email", async (req, res) => {
         <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
           <tr>
             <td style="padding: 30px 20px; text-align: center; background-color: #05FFDE;">
-              <img src="${logoBase64}" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px; border-radius: 50%;">
+              <img src="${logoBase64}" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px;">
               <h1 style="margin: 0; font-size: 28px; color: #000;">Welcome to Celeriz 💸</h1>
               <p style="margin: 8px 0 0; font-size: 16px; color: #333;">You're officially on the list!</p>
             </td>

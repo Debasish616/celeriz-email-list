@@ -41,35 +41,56 @@ app.post("/api/send-email", async (req, res) => {
     const data = await resend.emails.send({
       from: "Celeriz <team@celeriz.com>",
       to,
-      subject: "Welcome to Celeriz! 🎉",
+      subject: "Welcome to Celeriz 💸",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
-          <div style="text-align: center; margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
-            <h1 style="color: #333; margin: 0; font-size: 24px;">Celeriz</h1>
-          </div>
-          
-          <div style="padding: 20px;">
-            <h2 style="color: #333; text-align: center;">Welcome to Celeriz!</h2>
-            <p style="color: #666; line-height: 1.6;">Thank you for joining our community. We're thrilled to have you on board!</p>
-            
-            <p style="color: #666; line-height: 1.6;">As a subscriber, you'll be the first to know about:</p>
-            <ul style="color: #666; line-height: 1.6;">
-              <li>Latest updates and announcements</li>
-              <li>Exclusive offers and promotions</li>
-              <li>Industry insights and best practices</li>
-            </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Celeriz</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+  <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f4f4; padding: 40px 0;">
+    <tr>
+      <td align="center">
+        <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
+          <tr>
+            <td style="padding: 30px 20px; text-align: center; background-color: #05FFDE;">
+              <h1 style="margin: 0; font-size: 28px; color: #000;">Welcome to Celeriz 💸</h1>
+              <p style="margin: 8px 0 0; font-size: 16px; color: #333;">You're officially on the list!</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px 30px 10px; color: #444;">
+              <p style="font-size: 16px; line-height: 1.6;">Thanks for joining the Celeriz waitlist — we're building a better way to move money globally.</p>
+              <p style="font-size: 16px; line-height: 1.6;">Celeriz is a stablecoin-powered neobank designed for the modern world. We help individuals, students, and businesses send and receive funds across borders instantly, affordably, and transparently — no middlemen, no hidden fees.</p>
 
-            <p style="color: #666; line-height: 1.6;">We're committed to providing you with valuable content and keeping you informed about everything happening at Celeriz.</p>
+              <p style="font-size: 16px; line-height: 1.6;">As a waitlist member, you'll get:</p>
+              <ul style="padding-left: 20px; font-size: 16px; line-height: 1.6; color: #333;">
+                <li>🚀 Early access to our beta launch</li>
+                <li>💡 Sneak peeks at features we're rolling out</li>
+                <li>🎁 Exclusive rewards for our earliest users</li>
+              </ul>
 
-            <p style="color: #666; line-height: 1.6;">If you have any questions or need assistance, feel free to reach out to us at <a href="mailto:team@celeriz.com" style="color: #007bff;">team@celeriz.com</a>.</p>
+              <p style="font-size: 16px; line-height: 1.6;">We believe financial freedom should be borderless, and you're now part of the movement that's making that real.</p>
 
-            <p style="color: #666; line-height: 1.6;">Best regards,<br>The Celeriz Team</p>
-          </div>
+              <p style="font-size: 16px; line-height: 1.6;">Got questions or want to say hi? Reach us any time at <a href="mailto:team@celeriz.com" style="color: #05FFDE;">team@celeriz.com</a>.</p>
 
-          <div style="text-align: center; margin-top: 20px; padding: 20px; background-color: #f8f9fa; font-size: 12px; color: #666;">
-            <p>© 2024 Celeriz. All rights reserved.</p>
-          </div>
-        </div>
+              <p style="font-size: 16px; line-height: 1.6; margin-top: 30px;">Welcome aboard,<br><strong>— The Celeriz Team</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center; font-size: 12px; color: #888; padding: 20px; background-color: #f8f9fa;">
+              © 2025 Celeriz Inc. All rights reserved.<br/>
+              You're receiving this email because you signed up for early access.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
       `
     })
 

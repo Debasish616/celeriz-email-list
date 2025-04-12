@@ -8,10 +8,6 @@
     {
       "src": "api/health.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -24,10 +20,6 @@
       "src": "/api/health",
       "dest": "/api/health.js",
       "methods": ["GET"]
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/public/images/$1"
     }
   ],
   "env": {

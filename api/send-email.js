@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import { Resend } from "resend"
+import fs from 'fs'
+import path from 'path'
 
 dotenv.config()
 const app = express()
@@ -15,6 +17,18 @@ app.use(express.json())
 const isValidEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
+}
+
+// Function to get base64 encoded image
+const getBase64Image = () => {
+  try {
+    const imagePath = path.join(process.cwd(), 'public', 'images', 'logo.png')
+    const imageBuffer = fs.readFileSync(imagePath)
+    return `data:image/png;base64,${imageBuffer.toString('base64')}`
+  } catch (error) {
+    console.error('Error reading image:', error)
+    return null
+  }
 }
 
 // Email sending endpoint
@@ -37,9 +51,21 @@ app.post("/api/send-email", async (req, res) => {
       })
     }
 
+    const logoBase64 = getBase64Image()
+    if (!logoBase64) {
+      return res.status(500).json({
+        success: false,
+        error: "Failed to load logo image"
+      })
+    }
+
     // Send email
     const data = await resend.emails.send({
-      from: "Celeriz <team@celeriz.com>",
+      from: {
+        name: "Celeriz",
+        email: "team@celeriz.com",
+        avatar: logoBase64
+      },
       to,
       subject: "Welcome to Celeriz 💸",
       html: `
@@ -56,7 +82,7 @@ app.post("/api/send-email", async (req, res) => {
         <table cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif;">
           <tr>
             <td style="padding: 30px 20px; text-align: center; background-color: #05FFDE;">
-              <img src="https://celeriz-email-list.vercel.app/images/logo.png" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px;">
+              <img src="${logoBase64}" alt="Celeriz Logo" style="max-width: 120px; height: auto; margin-bottom: 15px;">
               <h1 style="margin: 0; font-size: 28px; color: #000;">Welcome to Celeriz 💸</h1>
               <p style="margin: 8px 0 0; font-size: 16px; color: #333;">You're officially on the list!</p>
             </td>

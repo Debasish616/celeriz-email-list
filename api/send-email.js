@@ -33,7 +33,9 @@ export default async function handler(req, res) {
           <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;font-family:Arial,sans-serif;">
             <tr>
               <td align="center" style="padding:30px 20px;background-color:#05FFDE;">
-                <img src="https://celeriz-email-list.vercel.app/images/logo.png" alt="Celeriz Logo" style="max-width:120px;height:auto;margin-bottom:15px;" />
+                <img src="https://celeriz-email-list.vercel.app/images/logo.jpeg" 
+                     alt="Celeriz Logo" 
+                     style="max-width:120px;width:120px;height:auto;margin-bottom:15px;display:block;" />
                 <h1 style="margin:0;font-size:28px;color:#000;">Welcome to Celeriz 💸</h1>
                 <p style="margin:8px 0 0;font-size:16px;color:#333;">You're officially on the list!</p>
               </td>

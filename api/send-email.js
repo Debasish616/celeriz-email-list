@@ -1,9 +1,11 @@
 import { Resend } from "resend"
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*")
+  // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "https://project-iwruu3ba6rewgobr4ua2.framercanvas.com")
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
   res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+  res.setHeader("Access-Control-Allow-Credentials", "true")
 
   if (req.method === "OPTIONS") {
     return res.status(200).end()
@@ -58,7 +60,7 @@ export default async function handler(req, res) {
             <tr>
               <td align="center" style="font-size:12px;color:#888;padding:20px;background-color:#f8f9fa;">
                 © 2025 Celeriz, Inc. All rights reserved.<br />
-                You’re receiving this email because you signed up for early access.
+                You're receiving this email because you signed up for early access.
               </td>
             </tr>
           </table>

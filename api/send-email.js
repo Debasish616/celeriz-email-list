@@ -1,35 +1,12 @@
 import { Resend } from "resend"
 
-const allowedOrigins = [
-  'https://project-iwruu3ba6rewgobr4ua2.framercanvas.com',
-  'https://framer.com',
-  'https://framer.app',
-  'https://www.celeriz.com',
-  'https://celeriz.com'
-]
-
 export default async function handler(req, res) {
-  // Handle CORS
-  const origin = req.headers.origin
-  
-  // Always set CORS headers
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-  res.setHeader('Access-Control-Max-Age', '86400')
-
-  // Set origin if it's in our allowed list
-  if (origin && allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin)
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-  }
-
-  // Immediately handle OPTIONS request
+  // Handle OPTIONS request
   if (req.method === 'OPTIONS') {
     res.status(200).end()
     return
   }
 
-  // Handle actual request
   if (req.method !== "POST") {
     return res.status(405).json({ success: false, error: "Method not allowed" })
   }

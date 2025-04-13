@@ -1,14 +1,28 @@
 import { Resend } from "resend"
 
-export default async function handler(req, res) {
-  // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "https://project-iwruu3ba6rewgobr4ua2.framercanvas.com")
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type")
-  res.setHeader("Access-Control-Allow-Credentials", "true")
+const allowedOrigins = [
+  'https://project-iwruu3ba6rewgobr4ua2.framercanvas.com',
+  'https://framer.com',
+  'https://framer.app'
+]
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end()
+export default async function handler(req, res) {
+  const origin = req.headers.origin
+  
+  // Check if the origin is allowed
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Access-Control-Max-Age', '86400') // 24 hours
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
   }
 
   if (req.method !== "POST") {
